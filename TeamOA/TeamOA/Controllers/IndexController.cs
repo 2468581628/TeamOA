@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace TeamOA.Controllers
 {
-    public class dddController : Controller
+    public class IndexController : Controller
     {
         // GET: Index
         public ActionResult Index()

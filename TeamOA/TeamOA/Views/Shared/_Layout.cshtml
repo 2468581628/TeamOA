@@ -7,33 +7,45 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <style type="text/css">
+        body {
+            font-family: Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
+        }
+
+        .ui-resizable-helper {
+            border: 1px dotted gray;
+        }
+    </style>
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "ddd", "Index", new { area = "dfdf" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+<body class="page-header-fixed">
+    <div class="header navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <span data-lang="Main.Title" class="brand" style="width: 600px;height:20px; color: rgb(255, 255, 255); font-size: 18px; margin-left: 0px;">
+                    TeamOA
+                </span>
+                <ul class="nav pull-right" style="margin-right:50px;">
+                    <li class="dropdown user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img alt="" src="~/IMG/PHOTO/avatar1.jpg" />
+                            <span>ad</span>
+                            <i class="icon-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Common/UserAuthorize/logout"><i class="icon-key"></i> <span data-lang="Main.Logout">退出</span></a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <div class="page-container">
+        <div class="page-content">
+            <div class="container-fluid" id="contextPage">
+                @RenderBody()
+            </div>
+        </div>
     </div>
-
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>

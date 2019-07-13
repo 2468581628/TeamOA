@@ -3,3 +3,8 @@ C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\MemberModel\bin\Debug
 C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\MemberModel\obj\Debug\MemberModel.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\MemberModel\obj\Debug\MemberModel.dll
 C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\MemberModel\obj\Debug\MemberModel.pdb
+C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\Model\MemberModel\bin\Debug\MemberModel.dll
+C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\Model\MemberModel\bin\Debug\MemberModel.pdb
+C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\Model\MemberModel\obj\Debug\MemberModel.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\Model\MemberModel\obj\Debug\MemberModel.dll
+C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\Model\MemberModel\obj\Debug\MemberModel.pdb

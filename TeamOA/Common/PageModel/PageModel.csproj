@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{67AB64AD-9BE2-4BD1-995D-72DDA04A8E5C}</ProjectGuid>
+    <ProjectGuid>{695E0962-C4B9-456B-B28F-0B2849A464BC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MessageBLL</RootNamespace>
-    <AssemblyName>MessageBLL</AssemblyName>
+    <RootNamespace>PageModel</RootNamespace>
+    <AssemblyName>PageModel</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

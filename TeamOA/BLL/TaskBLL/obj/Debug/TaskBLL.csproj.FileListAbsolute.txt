@@ -1,0 +1,4 @@
+C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\BLL\TaskBLL\bin\Debug\TaskBLL.dll
+C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\BLL\TaskBLL\bin\Debug\TaskBLL.pdb
+C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\BLL\TaskBLL\obj\Debug\TaskBLL.dll
+C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\BLL\TaskBLL\obj\Debug\TaskBLL.pdb

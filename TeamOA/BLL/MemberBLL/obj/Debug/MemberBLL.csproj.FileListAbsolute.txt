@@ -1,0 +1,5 @@
+C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\BLL\MemberBLL\bin\Debug\MemberBLL.dll
+C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\BLL\MemberBLL\bin\Debug\MemberBLL.pdb
+C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\BLL\MemberBLL\obj\Debug\MemberBLL.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\BLL\MemberBLL\obj\Debug\MemberBLL.dll
+C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\BLL\MemberBLL\obj\Debug\MemberBLL.pdb

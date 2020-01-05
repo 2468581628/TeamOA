@@ -1,5 +1,0 @@
-C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\DAL\MemberDAL\bin\Debug\MemberDAL.dll
-C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\DAL\MemberDAL\bin\Debug\MemberDAL.pdb
-C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\DAL\MemberDAL\obj\Debug\MemberDAL.csprojResolveAssemblyReference.cache
-C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\DAL\MemberDAL\obj\Debug\MemberDAL.dll
-C:\Users\Administrator\Desktop\GitHub\TeamOA\TeamOA\TeamOA\DAL\MemberDAL\obj\Debug\MemberDAL.pdb

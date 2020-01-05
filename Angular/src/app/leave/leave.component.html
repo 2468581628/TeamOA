@@ -1,0 +1,68 @@
+<button nz-button nzType="primary" (click)="showModal()">新增</button>
+<nz-table #basicTable [nzData]="listOfData">
+    <thead>
+        <tr>
+        <th>开始时间</th>
+        <th>结束时间</th>
+        <th>类型</th>
+        <th>状态</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.startTime }}</td>
+        <td>{{ data.endTime }}</td>
+        <td>{{ data.type }}</td>
+        <td>{{ data.status }}</td>
+        </tr>
+    </tbody>
+</nz-table>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="新增请假申请" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <div>
+        <nz-date-picker
+            [nzDisabledDate]="disabledStartDate"
+            nzShowTime
+            nzFormat="yyyy-MM-dd HH:mm:ss"
+            [(ngModel)]="startValue"
+            nzPlaceHolder="开始时间"
+            (ngModelChange)="onStartChange($event)"
+            (nzOnOpenChange)="handleStartOpenChange($event)"
+        >
+        </nz-date-picker>
+    </div>
+    <div>
+        <nz-date-picker
+            [nzDisabledDate]="disabledEndDate"
+            nzShowTime
+            nzFormat="yyyy-MM-dd HH:mm:ss"
+            [(ngModel)]="endValue"
+            nzPlaceHolder="结束时间"
+            [nzOpen]="endOpen"
+            (ngModelChange)="onEndChange($event)"
+            (nzOnOpenChange)="handleEndOpenChange($event)"
+        >
+        </nz-date-picker>
+    </div>
+    <div>
+            <nz-select
+            style="width: 200px;"
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="类型"
+            [(ngModel)]="selectedValue"
+          >
+            <nz-option nzLabel="病假" nzValue="病假"></nz-option>
+            <nz-option nzLabel="调休" nzValue="调休"></nz-option>
+            <nz-option nzLabel="婚丧" nzValue="婚丧"></nz-option>
+          </nz-select>
+    </div>
+    <div>
+        <textarea
+            nz-input
+            style="width: 200px;margin-top: 10px;"
+            placeholder="备注"
+            [(ngModel)]="remark"
+            [nzAutosize]="{ minRows: 2, maxRows: 6 }"
+        ></textarea>
+    </div>
+</nz-modal>

@@ -1,0 +1,19 @@
+<p>check works!</p>
+<nz-tabset>
+    <nz-tab *ngFor="let tab of tabs" [nzTitle]="titleTemplate" (nzClick)="recordOrPower(tab.name)">
+      <ng-template #titleTemplate> <i nz-icon [nzType]="tab.icon"></i>{{ tab.name }} </ng-template>
+    </nz-tab>
+</nz-tabset>
+
+
+<div *ngIf="tabValue=='请假'">
+
+</div>
+
+<div *ngIf="tabValue=='加班'">
+
+</div>
+
+<div *ngIf="tabValue=='费用'">
+
+</div>

@@ -1,0 +1,35 @@
+<button nz-button nzType="primary" (click)="showModal()">新增</button>
+
+<nz-table #basicTable [nzData]="costInfo">
+    <thead>
+        <tr>
+        <th>费用类型</th>
+        <th>金额</th>
+        <th>申请时间</th>
+        <th>审核状态</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.costtype }}</td>
+        <td>{{ data.costcount }}</td>
+        <td>{{ data.datetime }}</td>
+        <td>{{ data.status }}</td>
+        </tr>
+    </tbody>
+</nz-table>
+
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="新增费用申请" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <div class="divMarginBottom"><span class="spanStyle">费用类型:</span><span><input [(ngModel)]="costType" class="spanInput" nz-input/></span></div>
+    <div class="divMarginBottom"><span class="spanStyle">金额:</span><span><input [(ngModel)]="costCount" class="spanInput" nz-input/></span></div>
+    <nz-divider nzDashed [nzText]="text">
+        <ng-template #text>附件</ng-template>
+    </nz-divider>
+    <div style="height: 40px;">
+        <a style="float: left !important; margin-top: 0px !important;" href="javascript:;" class="a-upload">
+            <input id="file" type="file" multiple (change)="upload($event)" />上传文件
+        </a>
+        <span *ngIf="spanValue==1">上传中……</span><span *ngIf="spanValue==2">文件上传成功</span>
+    </div>
+</nz-modal>

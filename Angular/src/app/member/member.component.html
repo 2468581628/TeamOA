@@ -1,0 +1,49 @@
+<button nz-button nzType="primary" (click)="AddMember()">新增</button>
+<nz-table #headerTable [nzData]="listOfData" [nzPageSize]="7">
+    <thead>
+      <tr>
+        <th nzWidth="20%">账号</th>
+        <th nzWidth="20%">姓名</th>
+        <th nzWidth="20%">电话</th>
+        <th nzWidth="20%">状态</th>
+        <th nzWidth="20%">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of headerTable.data">
+        <td>{{ data.account }}</td>
+        <td>{{ data.username }}</td>
+        <td>{{ data.tel }}</td>
+        <td><nz-switch [ngModel]="data.status" nzCheckedChildren="启用" nzUnCheckedChildren="禁用" (ngModelChange)="OnOrOff($event,data.id)"></nz-switch></td>
+        <td>
+            <button nz-button nzType="primary" (click)="ChangeMemInfo(data.id,data.username,data.tel)">编辑</button>
+            <button nz-button nzType="primary" (click)="ChangePW(data.id)">修改密码</button>
+        </td>
+      </tr>
+    </tbody>
+</nz-table>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="添加" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <input nz-input placeholder="账号" [(ngModel)]="mem_account"/>
+  <br/><br/>
+  <input nz-input placeholder="密码" [(ngModel)]="mem_pw"/>
+  <br/><br/>
+  <input nz-input placeholder="用户名" [(ngModel)]="mem_name"/>
+  <br/><br/>
+  <input nz-input placeholder="电话" [(ngModel)]="mem_tel" />
+</nz-modal>
+
+
+
+<nz-modal [(nzVisible)]="isVisiblCMemInfo" nzTitle="编辑" (nzOnCancel)="handleCancelCMemInfo()" (nzOnOk)="handleOkCMemInfo()">
+  <input nz-input placeholder="用户名" [(ngModel)]="mem_name"/>
+  <br/><br/>
+  <input nz-input placeholder="电话" [(ngModel)]="mem_tel" />
+</nz-modal>
+
+
+
+<nz-modal [(nzVisible)]="isVisibleCPW" nzTitle="修改密码" (nzOnCancel)="handleCancelCPW()" (nzOnOk)="handleOkCPW()">
+  <input nz-input placeholder="密码" [(ngModel)]="mem_pw"/>
+  <br/><br/>
+  <input nz-input placeholder="确认密码" [(ngModel)]="mem_pw2"/>
+</nz-modal>

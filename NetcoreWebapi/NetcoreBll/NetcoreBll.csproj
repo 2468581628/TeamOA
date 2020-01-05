@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AssemblyName>NetcoreBll</AssemblyName>
+    <RootNamespace>NetcoreBll</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NetcoreInfrastructure\NetcoreInfrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

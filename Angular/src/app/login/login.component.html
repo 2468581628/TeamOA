@@ -1,0 +1,21 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      TeamOA  
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" formControlName="login"
+        required>
+      <div style="color:red;" *ngIf="loginForm.get('login')?.dirty && loginForm.get('login')?.errors">账号不能为空</div>
+      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password"
+        formControlName="password" required>
+      <div style="color:red;" *ngIf="loginForm.get('password')?.dirty && loginForm.get('password')?.errors">密码不能为空</div>
+      <input type="submit" class="fadeIn fourth" [disabled]="!loginForm.valid" value="Log In">
+    </form>
+  </div>
+</div>

@@ -4,4 +4,6 @@ export class Leave {
     endTime:Date;
     type:string;
     status:string;
+    userId:string;
+    userName:string;
 }

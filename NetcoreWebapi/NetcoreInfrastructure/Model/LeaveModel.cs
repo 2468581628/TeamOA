@@ -17,5 +17,9 @@ namespace NetcoreInfrastructure.Model
         public string Remark { get; set; }
 
         public int ID { get; set; }
+
+        public string UserName { get; set; }
+
+        public int UserId { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using NetcoreBll.Check;
 using NetcoreBll.Cost;
 using NetcoreBll.Leave;
 using NetcoreBll.Login;
@@ -15,6 +16,7 @@ using NetcoreInfrastructure.ConfigModel;
 using NetcoreInfrastructure.ConfigModel.SqlTemplate;
 using NetcoreInfrastructure.Interface.Repository;
 using NetcoreInfrastructure.Interface.Service;
+using NetcoreInfrastructure.Interface.Service.Check;
 using NetcoreInfrastructure.Interface.Service.Cost;
 using NetcoreInfrastructure.Interface.Service.Leave;
 using NetcoreInfrastructure.Interface.Service.Member;
@@ -45,18 +47,21 @@ namespace NetcoreWebapi
             services.Configure<MemberSqlTemplate>(Configuration.GetSection("SqlTemplate:MemberSqlTemplate"));
             services.Configure<LeaveSqlTemplate>(Configuration.GetSection("SqlTemplate:LeaveSqlTemplate"));
             services.Configure<CostSqlTemplate>(Configuration.GetSection("SqlTemplate:CostSqlTemplate"));
+            services.Configure<CheckSqlTemplate>(Configuration.GetSection("SqlTemplate:CheckSqlTemplate"));
 
             //DI Service
             services.AddTransient<IMemberService, MemberService>();
             services.AddTransient<ILoginService, Login>();
             services.AddTransient<ILeaveService, LeaveService>();
             services.AddTransient<ICostService, CostService>();
+            services.AddTransient<ICheckService, CheckService>();
 
             //DI Repository
             services.AddTransient<IMemberRepository, MemberRepository>();
             services.AddTransient<ILoginRepository, DALLogin>();
             services.AddTransient<ILeaveRepository, LeaveRepository>();
             services.AddTransient<ICostRepository, CostRepository>();
+            services.AddTransient<ICheckRepository, CheckRepository>();
 
 
             // configure strongly typed settings objects

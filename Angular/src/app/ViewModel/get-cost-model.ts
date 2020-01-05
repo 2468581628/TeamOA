@@ -7,4 +7,5 @@ export class GetCostModel {
     STATUS:string;
     USER_ID:number;
     ID:number;
+    userName:string;
 }

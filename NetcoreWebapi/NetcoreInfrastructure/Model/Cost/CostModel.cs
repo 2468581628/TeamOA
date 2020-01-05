@@ -21,5 +21,7 @@ namespace NetcoreInfrastructure.Model.Cost
         public int USER_ID { get; set; }
 
         public int ID { get; set; }
+
+        public string UserName { get; set; }
     }
 }

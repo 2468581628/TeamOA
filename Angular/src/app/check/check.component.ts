@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CheckModel } from '../ViewModel/check-model';
 
 @Component({
   selector: 'app-check',
@@ -29,6 +30,11 @@ export class CheckComponent implements OnInit {
 
   tabValue:string="请假";
 
+
+  tableData:CheckModel={
+    costData:null,
+    leaveData:null
+  };
   recordOrPower(tabValue:string):void{
     this.tabValue=tabValue;
   }

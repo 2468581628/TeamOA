@@ -10,6 +10,7 @@ using NetcoreBll.Cost;
 using NetcoreBll.Leave;
 using NetcoreBll.Login;
 using NetcoreBll.Member;
+using NetcoreBll.Overtime;
 using NetcoreDal.DapperRepository;
 using NetcoreDal.Login;
 using NetcoreInfrastructure.ConfigModel;
@@ -20,6 +21,7 @@ using NetcoreInfrastructure.Interface.Service.Check;
 using NetcoreInfrastructure.Interface.Service.Cost;
 using NetcoreInfrastructure.Interface.Service.Leave;
 using NetcoreInfrastructure.Interface.Service.Member;
+using NetcoreInfrastructure.Interface.Service.Overtime;
 using System.Text;
 
 namespace NetcoreWebapi
@@ -48,6 +50,7 @@ namespace NetcoreWebapi
             services.Configure<LeaveSqlTemplate>(Configuration.GetSection("SqlTemplate:LeaveSqlTemplate"));
             services.Configure<CostSqlTemplate>(Configuration.GetSection("SqlTemplate:CostSqlTemplate"));
             services.Configure<CheckSqlTemplate>(Configuration.GetSection("SqlTemplate:CheckSqlTemplate"));
+            services.Configure<OvertimeSqlTemplate>(Configuration.GetSection("SqlTemplate:OvertimeSqlTemplate"));
 
             //DI Service
             services.AddTransient<IMemberService, MemberService>();
@@ -55,6 +58,7 @@ namespace NetcoreWebapi
             services.AddTransient<ILeaveService, LeaveService>();
             services.AddTransient<ICostService, CostService>();
             services.AddTransient<ICheckService, CheckService>();
+            services.AddTransient<IOvertimeService, OvertimeService>();
 
             //DI Repository
             services.AddTransient<IMemberRepository, MemberRepository>();
@@ -62,6 +66,7 @@ namespace NetcoreWebapi
             services.AddTransient<ILeaveRepository, LeaveRepository>();
             services.AddTransient<ICostRepository, CostRepository>();
             services.AddTransient<ICheckRepository, CheckRepository>();
+            services.AddTransient<IOvertimeRepository, OvertimeRepository>();
 
 
             // configure strongly typed settings objects

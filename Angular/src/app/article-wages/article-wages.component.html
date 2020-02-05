@@ -1,1 +1,31 @@
-<p>article-wages works!</p>
+<div style="height: 40px;">
+    <a style="float: left !important; margin-top: 0px !important;" href="javascript:;" class="a-upload">
+        <input id="file" type="file" multiple (change)="upload($event)" />上传工资信息
+    </a>
+    <span *ngIf="spanValue==1">上传中……</span><span *ngIf="spanValue==2">文件上传成功</span>
+</div>
+
+<nz-table #headerTable [nzData]="" [nzPageSize]="7">
+    <thead>
+      <tr>
+        <th nzWidth="10%">工号</th>
+        <th nzWidth="10%">姓名</th>
+        <th nzWidth="16%">月份</th>
+        <th nzWidth="16%">应发</th>
+        <th nzWidth="16%">社保</th>
+        <th nzWidth="16%">公积金</th>
+        <th nzWidth="16%">实发</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of headerTable.data">
+        <!-- <td>{{ data.startTime }}</td>
+        <td>{{ data.endTime}}</td>
+        <td>{{ data.inputValue }}</td>
+        <td>{{ data.dateTime}}</td>
+        <td>{{ data.status }}</td>
+        <td>{{ data.status }}</td>
+        <td>{{ data.status }}</td> -->
+      </tr>
+    </tbody>
+</nz-table>

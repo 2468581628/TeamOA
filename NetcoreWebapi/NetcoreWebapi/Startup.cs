@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using NetcoreBll.Articlewages;
 using NetcoreBll.Check;
 using NetcoreBll.Cost;
 using NetcoreBll.Leave;
@@ -17,6 +18,7 @@ using NetcoreInfrastructure.ConfigModel;
 using NetcoreInfrastructure.ConfigModel.SqlTemplate;
 using NetcoreInfrastructure.Interface.Repository;
 using NetcoreInfrastructure.Interface.Service;
+using NetcoreInfrastructure.Interface.Service.Articlewages;
 using NetcoreInfrastructure.Interface.Service.Check;
 using NetcoreInfrastructure.Interface.Service.Cost;
 using NetcoreInfrastructure.Interface.Service.Leave;
@@ -51,6 +53,7 @@ namespace NetcoreWebapi
             services.Configure<CostSqlTemplate>(Configuration.GetSection("SqlTemplate:CostSqlTemplate"));
             services.Configure<CheckSqlTemplate>(Configuration.GetSection("SqlTemplate:CheckSqlTemplate"));
             services.Configure<OvertimeSqlTemplate>(Configuration.GetSection("SqlTemplate:OvertimeSqlTemplate"));
+            services.Configure<ArticlewagesSqlTemplate>(Configuration.GetSection("SqlTemplate:ArticlewagesSqlTemplate"));
 
             //DI Service
             services.AddTransient<IMemberService, MemberService>();
@@ -59,6 +62,7 @@ namespace NetcoreWebapi
             services.AddTransient<ICostService, CostService>();
             services.AddTransient<ICheckService, CheckService>();
             services.AddTransient<IOvertimeService, OvertimeService>();
+            services.AddTransient<IArticlewagesService, ArticlewagesService>();
 
             //DI Repository
             services.AddTransient<IMemberRepository, MemberRepository>();
@@ -67,6 +71,7 @@ namespace NetcoreWebapi
             services.AddTransient<ICostRepository, CostRepository>();
             services.AddTransient<ICheckRepository, CheckRepository>();
             services.AddTransient<IOvertimeRepository, OvertimeRepository>();
+            services.AddTransient<IArticlewagesRepository, ArticlewagesRepository>();
 
 
             // configure strongly typed settings objects

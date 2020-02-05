@@ -11,6 +11,10 @@ export class ArticleWagesService {
   constructor(private http: HttpClient) { }
 
   UpLoadingFile(files:FormData):Observable<ApiResult>{
-    return this.http.post<ApiResult>("http://localhost:50367/api/Cost/UploaderFile",files);
+    return this.http.post<ApiResult>("http://localhost:50367/api/Articlewages/UploaderFile",files);
+  }
+
+  GetInfo():Observable<ApiResult>{
+    return this.http.get<ApiResult>("http://localhost:50367/api/Articlewages/GetArticlewages");
   }
 }

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -27,6 +30,8 @@ namespace NetcoreWebapi.Controllers
             _articlewagesService = articlewagesService;
         }
 
+        [Authorize]
+        [HttpPost]
         public ApiResult UploaderFile(IFormFile uploadFile)
         {
             string projectFileName = null;
@@ -36,7 +41,7 @@ namespace NetcoreWebapi.Controllers
                 {
                     Guid guid = Guid.NewGuid();
                     projectFileName = guid.ToString();
-                    var filePath = "../File/File" + $@"\{projectFileName}";
+                    var filePath = "../File/Salary" + $@"\{projectFileName}";
                     try
                     {
                         using (FileStream fs = System.IO.File.Create(filePath))
@@ -52,8 +57,17 @@ namespace NetcoreWebapi.Controllers
 
                 }
             }
-            var data = this._articlewagesService.ReadExcel(projectFileName);
-            return new ApiResult("");
+            var data = this._articlewagesService.ReadExcel("../File/Salary" + $@"\{projectFileName}");
+            return new ApiResult(data);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ApiResult GetArticlewages()
+        {
+            List<Claim> Claims = new JwtSecurityTokenHandler().ReadJwtToken(Request.Headers["Authorization"].ToString().Replace("Bearer ", "")).Claims.ToList();
+            var data = this._articlewagesService.GetArticlewages(Convert.ToInt32(Claims[1].Value));
+            return new ApiResult(data);
         }
     }
 }

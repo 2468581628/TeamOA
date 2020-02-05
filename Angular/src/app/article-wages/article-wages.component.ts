@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleWagesService } from './article-wages.service';
+import { ArticleWagesModel } from '../ViewModel/article-wages-model';
 
 @Component({
   selector: 'app-article-wages',
@@ -11,10 +12,11 @@ export class ArticleWagesComponent implements OnInit {
   constructor(private articleWagesService:ArticleWagesService) { }
 
   ngOnInit() {
+    this.GetInfo();
   }
 
   spanValue:number;
-  
+
   upload(event) {
     this.spanValue=1;
     let fileList: FileList = event.target.files;
@@ -27,6 +29,16 @@ export class ArticleWagesComponent implements OnInit {
     this.articleWagesService.UpLoadingFile(formData).subscribe(response => {
       if (response.code == '0000') {
         this.spanValue=2;
+        this.GetInfo();
+      }
+    });
+  }
+
+  articleWagesModel:ArticleWagesModel[];
+  GetInfo(){
+    this.articleWagesService.GetInfo().subscribe(data=>{
+      if (data.code == '0000') {
+        this.articleWagesModel=<ArticleWagesModel[]>data.data;
       }
     });
   }

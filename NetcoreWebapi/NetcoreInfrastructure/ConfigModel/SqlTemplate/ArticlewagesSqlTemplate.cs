@@ -6,5 +6,10 @@ namespace NetcoreInfrastructure.ConfigModel.SqlTemplate
 {
     public class ArticlewagesSqlTemplate
     {
+        public string AddArticlewages { get; set; }
+
+        public string GetInfo { get; set; }
+
+        public string GetInfoAdmin { get; set; }
     }
 }

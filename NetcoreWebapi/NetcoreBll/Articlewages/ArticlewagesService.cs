@@ -1,8 +1,10 @@
 ﻿using NetcoreInfrastructure.Interface.Repository;
 using NetcoreInfrastructure.Interface.Service.Articlewages;
 using NetcoreInfrastructure.Model.Articlewages;
+using NPOI.SS.UserModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace NetcoreBll.Articlewages
@@ -15,16 +17,17 @@ namespace NetcoreBll.Articlewages
             _articlewagesRepository = articlewagesRepository;
         }
 
-        public int ReadExcel(string projectFileName)
+        public int ReadExcel(string fileName )
         {
-            ReadArticlewagesModel data = new ReadArticlewagesModel();
+            string sheetName = null;
+            List<ReadArticlewagesModel> data = new List<ReadArticlewagesModel>();
             //数据开始行(排除标题行)
-            int startRow = 7;
+            int startRow = 3;
             try
             {
                 if (!File.Exists(fileName))
                 {
-                    return null;
+                    return 0;
                 }
                 //根据指定路径读取文件
                 FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
@@ -51,58 +54,52 @@ namespace NetcoreBll.Articlewages
                 }
                 if (sheet != null)
                 {
-                    data.SUP_ID = sheet.GetRow(0).GetCell(1).ToString();
-                    data.PO_NUMBER = sheet.GetRow(1).GetCell(1).ToString();
-                    data.DELIVERY_NUMBER = sheet.GetRow(2).GetCell(1).ToString();
-                    data.PART_NUMBER = sheet.GetRow(3).GetCell(1).ToString();
+                    string Year = sheet.GetRow(0).GetCell(1).ToString();
+                    string Month = sheet.GetRow(1).GetCell(1).ToString();
 
                     //IRow firstRow = sheet.GetRow(0);
-                    IRow firstRow = sheet.GetRow(6);
+                    IRow firstRow = sheet.GetRow(3);
                     //一行最后一个cell的编号 即总的列数
                     int cellCount = firstRow.LastCellNum;
 
-                    List<OrderDetailModel> list = new List<OrderDetailModel>();
-                    int f = 0;
                     for (int i = startRow; ; ++i)
                     {
                         IRow row = sheet.GetRow(i);
-                        if (row == null)
-                        {
-                            data.OrderDetailList = list;
-                            break;
-                        }
-                        else
+                        if (row != null)
                         {
                             IRow rowUp = sheet.GetRow(i - 1);
-                            if (row.GetCell(0).ToString() != rowUp.GetCell(0).ToString()) { f++; }
-                            OrderDetailModel OrderDetail = new OrderDetailModel
+                            ReadArticlewagesModel OrderDetail = new ReadArticlewagesModel
                             {
-                                LOT_ID = row.GetCell(0).ToString(),
-                                LOT_ID_NO = f,
-                                QUANTITY = Convert.ToInt32(row.GetCell(1).ToString()),
-                                QTY_UNIT = row.GetCell(2).ToString(),
-                                PARAMETER_SEQUENCE = row.GetCell(3).ToString(),
-                                PARAMETER = row.GetCell(4).ToString(),
-                                UNIT = row.GetCell(5).ToString(),
-                                REMARK = row.GetCell(9).ToString()
+                                UserId = Convert.ToInt32(row.GetCell(0).ToString()),
+                                UserName = row.GetCell(1).ToString(),
+                                YearMonth = Year + " " + Month,
+                                AllMoney = Convert.ToDouble(row.GetCell(2).ToString()),
+                                Insurance = Convert.ToDouble(row.GetCell(3).ToString()),
+                                AccumulationFund = Convert.ToDouble(row.GetCell(4).ToString()),
+                                PracticalMoney = Convert.ToDouble(row.GetCell(5).ToString())
                             };
-                            if (OrderDetail.UNIT != null && OrderDetail.UNIT != "")
-                            {
-                                OrderDetail.DATA_VALUE = Convert.ToDouble(row.GetCell(6).ToString());
-                                OrderDetail.SUP_USL = Convert.ToDouble(row.GetCell(7).ToString());
-                                OrderDetail.SUP_LSL = Convert.ToDouble(row.GetCell(8).ToString());
-                                OrderDetail.DATA_TYPE = "Y";
-                            }
-                            else
-                            {
-                                OrderDetail.DATA_STRING = row.GetCell(6).ToString();
-                                OrderDetail.DATA_TYPE = "N";
-                            }
-                            list.Add(OrderDetail);
+                            data.Add(OrderDetail);
                         }
+                        else {
+                            break;
+                        }
+
                     }
                 }
-                return 0;
+                int d =this._articlewagesRepository.AddArticlewagesInfo(data);
+                return d;
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                throw;
+            }
+        }
+
+        public IEnumerable<ReadArticlewagesModel> GetArticlewages(int UserId)
+        {
+            var data = this._articlewagesRepository.GetArticlewages(UserId);
+            return data;
         }
     }
 }

@@ -5,7 +5,7 @@
     <span *ngIf="spanValue==1">上传中……</span><span *ngIf="spanValue==2">文件上传成功</span>
 </div>
 
-<nz-table #headerTable [nzData]="" [nzPageSize]="7">
+<nz-table #headerTable [nzData]="articleWagesModel" [nzPageSize]="7">
     <thead>
       <tr>
         <th nzWidth="10%">工号</th>
@@ -19,13 +19,13 @@
     </thead>
     <tbody>
       <tr *ngFor="let data of headerTable.data">
-        <!-- <td>{{ data.startTime }}</td>
-        <td>{{ data.endTime}}</td>
-        <td>{{ data.inputValue }}</td>
-        <td>{{ data.dateTime}}</td>
-        <td>{{ data.status }}</td>
-        <td>{{ data.status }}</td>
-        <td>{{ data.status }}</td> -->
+        <td>{{ data.userId }}</td>
+        <td>{{ data.userName}}</td>
+        <td>{{ data.yearMonth }}</td>
+        <td>{{ data.allMoney}}</td>
+        <td>{{ data.insurance }}</td>
+        <td>{{ data.accumulationFund }}</td>
+        <td>{{ data.practicalMoney }}</td>
       </tr>
     </tbody>
 </nz-table>

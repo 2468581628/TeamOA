@@ -5,4 +5,5 @@ export class CheckCost {
     dateTime:Date;
     costCount:number;
     status:string;
+    newFileName:string;
 }

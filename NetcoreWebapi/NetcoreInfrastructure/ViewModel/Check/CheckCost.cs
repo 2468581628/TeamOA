@@ -17,5 +17,7 @@ namespace NetcoreInfrastructure.ViewModel.Check
         public string Type { get; set; }
 
         public string Status { get; set; }
+
+        public string NewFileName { get; set; }
     }
 }

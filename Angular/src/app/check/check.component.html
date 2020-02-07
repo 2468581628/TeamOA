@@ -81,7 +81,9 @@
         <td>{{data.dateTime| date:'yyyy-MM-dd HH:mm:ss'}}</td>
         <td>{{data.status}}</td>
         <td>
-          <button nz-button nzType="primary">查看详情</button>
+          <button nz-button nzType="primary" (click)="fileDown(data.newFileName)">下载附件</button>
+          <button nz-button *ngIf="data.status=='未审核'" nzType="primary" (click)="CheckInfo(data.id,'审核通过',3)">通过</button>
+          <button nz-button *ngIf="data.status=='未审核'" nzType="primary" (click)="CheckInfo(data.id,'未通过',3)">未通过</button>
         </td>
         </tr>
     </tbody>

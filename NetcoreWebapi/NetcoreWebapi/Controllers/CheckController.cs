@@ -66,13 +66,12 @@ namespace NetcoreWebapi.Controllers
             return new ApiResult(data);
         }
 
-        public ApiResult DownFile()
+        [HttpGet]
+        public FileResult DownFile(string FileName)
         {
 
-            var stream = System.IO.File.OpenRead("../File/File/d1ceeb59-1433-4abf-bf35-124689c03a8b");  //创建文件流
-
-            ;
-            return new ApiResult(File(stream, "text/plain", "wendang.xlsx"));
+            return File(System.IO.File.OpenRead("../File/File/"+ FileName), "text/plain", "wendang.xlsx");
+            //return new ApiResult(data);
         }
     }
 }

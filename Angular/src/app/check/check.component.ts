@@ -82,4 +82,10 @@ export class CheckComponent implements OnInit {
       }
     });
   }
+
+
+  fileDown(fileId: string) { // 下载
+    window.location.href = `http://localhost:50367/api/Check/DownFile?FileName=${fileId}`;
+}
+
 }

@@ -8,6 +8,7 @@ using NetcoreInfrastructure.Interface.Service.Check;
 using NetcoreInfrastructure.Interface.Service.Cost;
 using NetcoreInfrastructure.Model.Cost;
 using NetcoreInfrastructure.ViewModel;
+using NetcoreInfrastructure.ViewModel.Check;
 using NetcoreInfrastructure.ViewModel.Cost;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,47 @@ namespace NetcoreWebapi.Controllers
             _logger = logger;
             _appConfig = appConfig.Value;
             _checkService = checkService;
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ApiResult GetLeaveInfo()
+        {
+            var data = this._checkService.GetData(1);
+            return new ApiResult(data);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ApiResult GetOvertime()
+        {
+            var data = this._checkService.GetData(2);
+            return new ApiResult(data);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ApiResult GetCost()
+        {
+            var data = this._checkService.GetData(3);
+            return new ApiResult(data);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ApiResult CheckInfo(CheckStatus info)
+        {
+            var data = this._checkService.UpdateInfo(info);
+            return new ApiResult(data);
+        }
+
+        public ApiResult DownFile()
+        {
+
+            var stream = System.IO.File.OpenRead("../File/File/d1ceeb59-1433-4abf-bf35-124689c03a8b");  //创建文件流
+
+            ;
+            return new ApiResult(File(stream, "text/plain", "wendang.xlsx"));
         }
     }
 }

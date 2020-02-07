@@ -1,6 +1,6 @@
 <div style="height: 40px;">
     <a style="float: left !important; margin-top: 0px !important;" href="javascript:;" class="a-upload">
-        <input id="file" type="file" multiple (change)="upload($event)" />上传工资信息
+        <input id="file" type="file" multiple (change)="upload($event)"  accept=".xlsx" />上传工资信息
     </a>
     <span *ngIf="spanValue==1">上传中……</span><span *ngIf="spanValue==2">文件上传成功</span>
 </div>
